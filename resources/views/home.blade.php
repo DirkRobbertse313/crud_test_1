@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <p>Welcome {{ Auth::user()->name }}</p>
                     {{ __('You are logged in!') }}
+                    <a href="{{ route('employee.index') }}"><p>View employees</p></a>
                 </div>
             </div>
         </div>

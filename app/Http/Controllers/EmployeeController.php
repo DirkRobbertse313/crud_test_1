@@ -16,7 +16,8 @@ class EmployeeController extends Controller
     {
         $employee = Employee::Latest()->get();
 
-        return view('employees.index',
+        return view(
+            'employees.index',
             [
                 'employee' => $employee,
             ]
@@ -50,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        return view('employees.show',
+        return view(
+            'employees.show',
             [
                 'employee' => $employee
             ]
@@ -62,7 +64,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.edit',
+        return view(
+            'employees.edit',
             [
                 'employee' => $employee,
             ]
@@ -76,14 +79,14 @@ class EmployeeController extends Controller
     {
         $sanitized = $request->validated();
 
-        if($employee->update($sanitized)) {
+        if ($employee->update($sanitized)) {
             return redirect()
                 ->route('employee.index')
                 ->with('success', 'Employee updated successfully.');
-        }else {
+        } else {
             return redirect()
-            ->back()
-            ->with('error', 'Something went wrong');
+                ->back()
+                ->with('error', 'Something went wrong');
         }
     }
 
@@ -92,14 +95,14 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        if($employee->delete()) {
+        if ($employee->delete()) {
             return redirect()
                 ->route('employee.index')
                 ->with('success', 'Employee deleted successfully.');
-        }else {
+        } else {
             return redirect()
-            ->back()
-            ->with('error', 'Something went wrong');
+                ->back()
+                ->with('error', 'Something went wrong');
         }
     }
 }
